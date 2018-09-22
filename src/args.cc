@@ -166,6 +166,8 @@ void Args::parseArgs(const std::vector<std::string>& args) {
         cutoff = std::stoi(args.at(ai + 1));
       } else if (args[ai] == "-dsub") {
         dsub = std::stoi(args.at(ai + 1));
+      } else if (args[ai] == "-exclude") {
+        excludes.insert(std::string(args.at(ai + 1)));
       } else {
         std::cerr << "Unknown argument: " << args[ai] << std::endl;
         printHelp();

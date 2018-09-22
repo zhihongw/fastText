@@ -131,7 +131,19 @@ entry_type Dictionary::getType(int32_t id) const {
 }
 
 entry_type Dictionary::getType(const std::string& w) const {
-  return (w.find(args_->label) == 0) ? entry_type::label : entry_type::word;
+  if (w.find(args_->label) == 0) {
+    return entry_type::label;
+  } else {
+    std::set<std::string>::iterator iter=args_->excludes.begin();
+    while(iter!=args_->excludes.end())
+    {
+        if (w.find(*iter)) {
+            return entry_type::exclude;
+        }
+        ++iter;
+    }
+    return entry_type::word;
+  }
 }
 
 std::string Dictionary::getWord(int32_t id) const {

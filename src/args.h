@@ -13,6 +13,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
+#include <set>
 
 namespace fasttext {
 
@@ -46,6 +47,7 @@ class Args {
     int thread;
     double t;
     std::string label;
+    std::set<std::string> excludes;
     int verbose;
     std::string pretrainedVectors;
     bool saveOutput;
